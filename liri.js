@@ -42,9 +42,22 @@ function twitter(inputs) {
 
 }
 
+function spotify(inputs) {
 
+    var spotify = new Spotify(keys.spotify);
+        if (!inputs){
+            inputs = 'The Sign';
+    }
+        spotify.search({ type: 'track', query: inputs }, function(err, data) {
+            if (err){
+            console.log('Error occurred: ' + err);
+            return;
+        }
 
-
-
-
-var spotify = new Spotify(keys.spotify);
+        var songInfo = data.tracks.items;
+	        console.log("Artist(s): " + songInfo[0].artists[0].name);
+	        console.log("Song Name: " + songInfo[0].name);
+	        console.log("Preview Link: " + songInfo[0].preview_url);
+	        console.log("Album: " + songInfo[0].album.name);
+	});
+}
