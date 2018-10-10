@@ -83,3 +83,29 @@ function movie(inputs) {
 		}
 	});
 };
+
+function doit() {
+	fs.readFile('random.txt', "utf8", function(error, data){
+
+		if (error) {
+    		return console.log(error);
+  		}
+
+		// Then split it by commas (to make it more readable)
+		var dataArr = data.split(",");
+
+		// Each command is represented. Because of the format in the txt file, remove the quotes to run these commands. 
+		if (dataArr[0] === "spotify-this-song") {
+			var songcheck = dataArr[1].slice(1, -1);
+			spotify(songcheck);
+		} else if (dataArr[0] === "my-tweets") {
+			var tweetname = dataArr[1].slice(1, -1);
+			twitter(tweetname);
+		} else if(dataArr[0] === "movie-this") {
+			var movie_name = dataArr[1].slice(1, -1);
+			movie(movie_name);
+		} 
+		
+  	});
+
+};
