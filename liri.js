@@ -4,7 +4,6 @@ var request = require('request');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var fs = require('fs');
-// var client = new Twitter(keys.twitter);
 var input = process.argv;
 var action = input[2];
 var inputs = input[3];
@@ -29,12 +28,6 @@ switch (action) {
 
 function twitter() {
 	var client = new Twitter(keys.twitter);
-	// var client = new Twitter({
-	// 	consumer_key: 'hpKLqBFUpmFwSPaGjMVIDMrsJ',
-	// 	consumer_secret: 'MuIMtELoEPiFLQRl9KUqjIBGYWxjWItOMKEfjTLc7PBqrYWhuZ',
-	// 	access_token_key: '1048289120366354433-Jnu7wbVP2dneFnIEx0x66tEejptxy8',
-	// 	access_token_secret: 'xsRvKW5ZUDb4a4rPGQoS5OFW4AWtiocJsUv3X78EQg0Pt'
-	//   });
 	var params = {screen_name: "CodingApprenti1", count: 20};
 	
 		client.get('statuses/user_timeline', params, function(error, tweets, response) {
